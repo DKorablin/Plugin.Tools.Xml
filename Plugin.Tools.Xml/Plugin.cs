@@ -11,7 +11,7 @@ using SAL.Windows;
 
 namespace Plugin.Tools.Xml
 {
-	/// <summary>Входной интерфейс для общения с плагином</summary>
+	/// <summary>Initial entry point for SAL plugins communication</summary>
 	public class Plugin : IPlugin, IPluginSettings<PluginSettings>
 	{
 		private readonly IHost _host;
