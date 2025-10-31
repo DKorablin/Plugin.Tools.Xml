@@ -7,17 +7,17 @@ using System.Drawing;
 
 namespace Plugin.Tools.Xml
 {
-	/// <summary>Окно теста XPath</summary>
+	/// <summary>XPath Test Window</summary>
 	public partial class PanelXPath : UserControl
 	{
 		private Plugin Plugin => (Plugin)this.Window.Plugin;
 		private IWindow Window => (IWindow)base.Parent;
 
-		/// <summary>Создание экземпляра теста XPath</summary>
+		/// <summary>Creating an XPath test instance</summary>
 		public PanelXPath()
-			=> InitializeComponent();
+			=> this.InitializeComponent();
 
-		/// <summary>Событие при завершении инициализации элемента управления</summary>
+		/// <summary>Event fired when control initialization is complete</summary>
 		protected override void OnCreateControl()
 		{
 			this.Window.Caption = "XPath Tester";

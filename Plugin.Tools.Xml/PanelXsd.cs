@@ -8,17 +8,17 @@ using SAL.Windows;
 
 namespace Plugin.Tools.Xml
 {
-	/// <summary>Окно тестирования и создания XSD схемы из XML</summary>
+	/// <summary>Window for testing and creating an XSD schema from XML</summary>
 	public partial class PanelXsd : UserControl
 	{
 		private Plugin Plugin => (Plugin)this.Window.Plugin;
 		private IWindow Window => (IWindow)base.Parent;
 
-		/// <summary>Создание экземпляра окна тестирования XSD</summary>
+		/// <summary>Creating an XSD Test Window instance</summary>
 		public PanelXsd()
-			=> InitializeComponent();
+			=> this.InitializeComponent();
 
-		/// <summary>Событие при завершении инициализации элемента управления</summary>
+		/// <summary>Event fired when control initialization is complete</summary>
 		protected override void OnCreateControl()
 		{
 			this.Window.Caption = "XSD Test";

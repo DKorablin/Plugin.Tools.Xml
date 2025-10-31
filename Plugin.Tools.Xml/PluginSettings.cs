@@ -6,20 +6,20 @@ using System.Collections.Generic;
 
 namespace Plugin.Tools.Xml
 {
-	/// <summary>Внешние настройки плагина</summary>
+	/// <summary>External plugin settings</summary>
 	public class PluginSettings
 	{
 		private String[] _mruXPath;
-		/// <summary>XML по умолчанию, который подставляется для теста</summary>
+		/// <summary>Default XML that is substituted for the test</summary>
 		[Category("General")]
-		[Description("Default XML for tesing")]
+		[Description("Default XML for testing")]
 		[DisplayName("XML")]
 		[Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
 		public String DefaultXml { get; set; }
 
-		/// <summary>Most Rescent used XPath's</summary>
+		/// <summary>Most Recent used XPath's</summary>
 		[Category("General")]
-		[Description("Most rescent used XPath's")]
+		[Description("Most recent used XPath's")]
 		[DisplayName("XPath MRU")]
 		public String MruXPathString
 		{
@@ -29,7 +29,7 @@ namespace Plugin.Tools.Xml
 			set => this.MruXPath = value?.Split(';');
 		}
 
-		/// <summary>Most Rescent used XPath's</summary>
+		/// <summary>Most Recent used XPath's</summary>
 		internal String[] MruXPath
 		{
 			get => this._mruXPath;
@@ -46,15 +46,15 @@ namespace Plugin.Tools.Xml
 
 			Int32 index = mru.IndexOf(xpath);
 			if(index == 0)
-				return;//И так в топе
+				return;//And so at the top
 			else if(index == -1)
-			{//Не найден, необходимо уменьшить список до 10 элементов
+			{//Not found, need to reduce list to 10 items
 				while(mru.Count > 10)
 					mru.RemoveAt(9);
 				mru.Insert(0, xpath);
 			}
 			else
-			{//Найден не в топе, необходимо перенести в топ
+			{//Found not in the top, needs to be moved to the top
 				mru.RemoveAt(index);
 				mru.Insert(0, xpath);
 			}

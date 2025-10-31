@@ -23,10 +23,10 @@ namespace Plugin.Tools.Xml
 
 		internal IHostWindows HostWindows => this._host as IHostWindows;
 
-		/// <summary>Настройки для взаимодействия из хоста</summary>
+		/// <summary>Settings for interaction from the host</summary>
 		Object IPluginSettings.Settings => this.Settings;
 
-		/// <summary>Настройки для взаимодействия из плагина</summary>
+		/// <summary>Settings for interaction from the plugin</summary>
 		public PluginSettings Settings
 		{
 			get
@@ -41,8 +41,11 @@ namespace Plugin.Tools.Xml
 		}
 
 		private IMenuItem XmlMenu { get; set; }
+
 		private IMenuItem XsltMenu { get; set; }
+
 		private IMenuItem XPathMenu { get; set; }
+
 		private IMenuItem XsdMenu { get; set; }
 
 		private Dictionary<String, DockState> DocumentTypes
@@ -65,18 +68,18 @@ namespace Plugin.Tools.Xml
 		public Plugin(IHost host)
 			=> this._host = host ?? throw new ArgumentNullException(nameof(host));
 
-		/// <summary>Получить <see cref="IWindow" /> по наименованию, который доступен в плагине</summary>
-		/// <param name="typeName">Тип окна для получения из плагина</param>
-		/// <param name="args">Аргументы, передаваемые окну</param>
-		/// <returns>ССылка на созданное окно</returns>
+		/// <summary>Get <see cref="IWindow" /> by name, which is available in the plugin</summary>
+		/// <param name="typeName">Window type to get from the plugin</param>
+		/// <param name="args">Arguments passed to the window</param>
+		/// <returns>Reference to the created window</returns>
 		public IWindow GetPluginControl(String typeName, Object args)
 			=> this.CreateWindow(typeName, false, args);
 
-		/// <summary>Преобразовать XML в XSLT</summary>
-		/// <param name="xml">Входящий XML</param>
-		/// <param name="xslt">Шаблон XSLT</param>
-		/// <exception cref="ArgumentNullException">xslt is required argument</exception>
-		/// <returns>Результат преобразования</returns>
+		/// <summary>Transform XML to XSLT</summary>
+		/// <param name="xml">Input XML</param>
+		/// <param name="xslt">XSLT Template</param>
+		/// <exception cref="ArgumentNullException"><paramref name="xslt"/> is required argument</exception>
+		/// <returns>Transformation Result</returns>
 		public String ApplyXslt(String xml, String xslt)
 		{
 			if(String.IsNullOrEmpty(xslt))
@@ -98,11 +101,11 @@ namespace Plugin.Tools.Xml
 			}
 		}
 
-		/// <summary>Применить XPath к XML содержимому и получить ответ</summary>
-		/// <param name="xml">Входящий XML</param>
-		/// <param name="xpath">Селектор XPath</param>
-		/// <exception cref="ArgumentNullException">xpath is required argument</exception>
-		/// <returns>Результат выборки</returns>
+		/// <summary>Apply XPath to XML content and get the response</summary>
+		/// <param name="xml">Incoming XML</param>
+		/// <param name="xpath">XPath selector</param>
+		/// <exception cref="ArgumentNullException">xpath is a required argument</exception>
+		/// <returns>Selection result</returns>
 		public String ApplyXPath(String xml, String xpath)
 		{
 			if(String.IsNullOrEmpty(xpath))
@@ -211,15 +214,15 @@ namespace Plugin.Tools.Xml
 
 			this.XsltMenu = this.XmlMenu.Create("XSL&T");
 			this.XsltMenu.Name = "Tools.XML.Xslt";
-			this.XsltMenu.Click += (sender, e)=> { this.CreateWindow(typeof(PanelXslt).ToString(), false); };
+			this.XsltMenu.Click += (sender, e) => this.CreateWindow(typeof(PanelXslt).ToString(), false);
 
 			this.XPathMenu = this.XmlMenu.Create("X&Path");
 			this.XPathMenu.Name = "Tools.XML.XPath";
-			this.XPathMenu.Click += (sender, e)=> { this.CreateWindow(typeof(PanelXPath).ToString(), false); };
+			this.XPathMenu.Click += (sender, e) => this.CreateWindow(typeof(PanelXPath).ToString(), false);
 
 			this.XsdMenu = this.XmlMenu.Create("XS&D");
 			this.XsdMenu.Name = "Tools.XML.XSD";
-			this.XsdMenu.Click += (sender, e) => { this.CreateWindow(typeof(PanelXsd).ToString(), false); };
+			this.XsdMenu.Click += (sender, e) => this.CreateWindow(typeof(PanelXsd).ToString(), false);
 
 			this.XmlMenu.Items.Add(this.XsltMenu);
 			this.XmlMenu.Items.Add(this.XPathMenu);

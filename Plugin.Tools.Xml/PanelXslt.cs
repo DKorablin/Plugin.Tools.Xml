@@ -8,17 +8,17 @@ using System.Drawing;
 
 namespace Plugin.Tools.Xml
 {
-	/// <summary>Окно теста XSLT</summary>
+	/// <summary>XSLT Test Window</summary>
 	public partial class PanelXslt : UserControl
 	{
 		private Plugin Plugin => (Plugin)this.Window.Plugin;
 		private IWindow Window => (IWindow)base.Parent;
 
-		/// <summary>Создание экземпляра окна теста XSLT</summary>
+		/// <summary>Creating an XSLT Test Window Instance</summary>
 		public PanelXslt()
-			=> InitializeComponent();
+			=> this.InitializeComponent();
 
-		/// <summary>Событие при завершении инициализации элемента управления</summary>
+		/// <summary>Event fired when control initialization is complete</summary>
 		protected override void OnCreateControl()
 		{
 			this.Window.Caption = "XSLT Tester";

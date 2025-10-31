@@ -1,4 +1,6 @@
 # XML Tools plugin
+[![Auto build](https://github.com/DKorablin/Plugin.Tools.Xml/actions/workflows/release.yml/badge.svg)](https://github.com/DKorablin/Plugin.Tools.Xml/releases/latest)
+
 When working with data in XML format you have to deal with validation, selecting and data transformation. There are a lot of tools for performing these operations while they provide much more functionality than the current plugin but it's more than enough to perform simple and routine tasks.
 
 It's designed to check XSLT conversion on XML data. In the upper window you need to place XSLT and in bottom - XML and press the only button on the toolBar.
