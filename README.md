@@ -1,10 +1,51 @@
-# XML Tools plugin
+# XML Tools Plugin
+
 [![Auto build](https://github.com/DKorablin/Plugin.Tools.Xml/actions/workflows/release.yml/badge.svg)](https://github.com/DKorablin/Plugin.Tools.Xml/releases/latest)
 
-When working with data in XML format you have to deal with validation, selecting and data transformation. There are a lot of tools for performing these operations while they provide much more functionality than the current plugin but it's more than enough to perform simple and routine tasks.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-It's designed to check XSLT conversion on XML data. In the upper window you need to place XSLT and in bottom - XML and press the only button on the toolBar.
+A [SAL](https://github.com/DKorablin/SAL.Windows) plugin that provides lightweight XML tooling for routine validation, querying, and transformation tasks directly within the host application.
 
-With this tool you can validate XPath selector and test in on data in XML format. Upper textBox is intended for XPath (MRUх10), lower textBox is intended for data in XML format. When you clicked on the only button in the toolBar we get the result of the selection through XPath in the right window.
+## Features
 
-Unlike simple testing of data in XSD format the window allows you to generate XSD (using standard .NET tools) which complains data structure in XML format.
+### XSLT Tester
+Apply an XSLT stylesheet to XML data and preview the output in real time.
+- Enter the XSLT in the top pane and the source XML in the bottom pane.
+- Press the toolbar button to execute the transformation and view the result.
+
+### XPath Tester
+Evaluate XPath expressions against XML data and inspect selected nodes.
+- Enter an XPath expression in the top field (autocomplete from a history of up to 10 recent queries).
+- Enter the source XML in the lower pane and press the toolbar button to see the matching nodes.
+
+### XSD Validator / Generator
+Validate XML documents against an XSD schema or generate an XSD schema from an existing XML document.
+- **Validate** — paste both XML and XSD, then press *Check* to verify conformance.
+- **Generate** — paste XML and press *Generate* to infer an XSD schema using the standard .NET tooling.
+
+## Settings
+
+| Setting | Description |
+|---|---|
+| **XML** | Default XML document pre-loaded into all tool panels on open. |
+| **XPath MRU** | Semicolon-separated list of the 10 most recently used XPath expressions. |
+
+## Installation
+
+1. Download latest GitHub release package (.zip or .nupkg).
+2. Place the plugin assembly into the host application plugin directory (SAL / host supporting Windows environment):
+	- [Flatbed.Dialog](https://dkorablin.github.io/Flatbed-Dialog/)
+	- [Flatbed.Dialog (Lite)](https://dkorablin.github.io/Flatbed-Dialog-Lite)
+	- [Flatbed.MDI](https://dkorablin.github.io/Flatbed-MDI)
+	- [Flatbed.MDI (WPF)](https://dkorablin.github.io/Flatbed-MDI-Avalon)
+	- [Flatbed.MDI (AvaloniaUI)](https://dkorablin.github.io/Flatbed-MDI-AvaloniaUI)
+3. Restart the host application; Plugin.Tools.Xml should appear in the menu toolbar (Tools -> XML -> [XSLT, X-Path, XSD]).
+
+## Requirements
+
+- .NET Framework 4.8 **or** .NET 8.0 (Windows)
+- SAL host application
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

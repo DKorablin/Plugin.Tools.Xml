@@ -20,7 +20,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<AssemblyAttributes Include="AssemblyMetadata" Condition="'$(TargetFramework)'=='net8.0-windows'">
+		<AssemblyAttributes Include="AssemblyMetadata">
 			<_Parameter1>ProjectUrl</_Parameter1>
 			<_Parameter2>https://github.com/DKorablin/Plugin.Tools.Xml</_Parameter2>
 		</AssemblyAttributes>
@@ -40,7 +40,7 @@
 		<PackageTags>SAL;Plugin;Xml;XPath;Xslt;Xsd;Tests</PackageTags>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Include="..\WinForms.Shared\DefaultTextBox.cs" Link="UI\DefaultTextBox.cs" />
+		<Compile Include="..\WinForms.Shared\DefaultTextBox.cs" Link="UI\DefaultTextBox.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,21 +56,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="UI\" />
+		<Folder Include="UI\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 </Project>

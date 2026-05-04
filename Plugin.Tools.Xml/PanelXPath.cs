@@ -1,16 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Xml;
-using SAL.Windows;
 using System.Drawing;
+using System.Windows.Forms;
+using SAL.Windows;
 
 namespace Plugin.Tools.Xml
 {
 	/// <summary>XPath Test Window</summary>
 	public partial class PanelXPath : UserControl
 	{
-		private Plugin Plugin => (Plugin)this.Window.Plugin;
+		private Plugin Plugin => (Plugin)this.Window.Plugin.Instance;
 		private IWindow Window => (IWindow)base.Parent;
 
 		/// <summary>Creating an XPath test instance</summary>

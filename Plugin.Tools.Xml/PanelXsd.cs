@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Schema;
 using SAL.Windows;
 
 namespace Plugin.Tools.Xml
@@ -11,7 +7,7 @@ namespace Plugin.Tools.Xml
 	/// <summary>Window for testing and creating an XSD schema from XML</summary>
 	public partial class PanelXsd : UserControl
 	{
-		private Plugin Plugin => (Plugin)this.Window.Plugin;
+		private Plugin Plugin => (Plugin)this.Window.Plugin.Instance;
 		private IWindow Window => (IWindow)base.Parent;
 
 		/// <summary>Creating an XSD Test Window instance</summary>
