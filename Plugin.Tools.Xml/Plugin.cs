@@ -16,10 +16,9 @@ namespace Plugin.Tools.Xml
 	{
 		private readonly IHost _host;
 		private PluginSettings _settings;
-		private TraceSource _trace;
 		private Dictionary<String, DockState> _documentTypes;
 
-		internal TraceSource Trace => this._trace ?? (this._trace = Plugin.CreateTraceSource<Plugin>());
+		internal ITraceSource Trace { get; }
 
 		internal IHostWindows HostWindows => this._host as IHostWindows;
 
@@ -65,8 +64,11 @@ namespace Plugin.Tools.Xml
 
 		/// <summary>Create instance of the Plugin host ans specify IHost as the bridge between other plugins</summary>
 		/// <param name="host">Plugin loader initiator</param>
-		public Plugin(IHost host)
-			=> this._host = host ?? throw new ArgumentNullException(nameof(host));
+		public Plugin(IHost host, ITraceSource trace)
+		{
+			this._host = host ?? throw new ArgumentNullException(nameof(host));
+			this.Trace = trace ?? throw new ArgumentNullException(nameof(trace));
+		}
 
 		/// <summary>Get <see cref="IWindow" /> by name, which is available in the plugin</summary>
 		/// <param name="typeName">Window type to get from the plugin</param>
@@ -194,14 +196,14 @@ namespace Plugin.Tools.Xml
 			IHostWindows host = this.HostWindows;
 			if(host == null)
 			{
-				this.Trace.TraceInformation("Plugin {0} requires {1}", this, typeof(IHostWindows));
+				this.Trace.TraceEvent(TraceEventType.Information, 0, "Plugin {0} requires {1}", this, typeof(IHostWindows));
 				return true;
 			}
 
 			IMenuItem menuTools = host.MainMenu.FindMenuItem("Tools");
 			if(menuTools == null)
 			{
-				this.Trace.TraceInformation("Menu item 'Tools' not found");
+				this.Trace.TraceEvent(TraceEventType.Information, 0, "Menu item 'Tools' not found");
 				return true;
 			}
 
@@ -252,15 +254,6 @@ namespace Plugin.Tools.Xml
 			return this.DocumentTypes.TryGetValue(typeName, out state)
 				? this.HostWindows.Windows.CreateWindow(this, typeName, searchForOpened, state, args)
 				: null;
-		}
-
-		private static TraceSource CreateTraceSource<T>(String name = null) where T : IPlugin
-		{
-			TraceSource result = new TraceSource(typeof(T).Assembly.GetName().Name + name);
-			result.Switch.Level = SourceLevels.All;
-			result.Listeners.Remove("Default");
-			result.Listeners.AddRange(System.Diagnostics.Trace.Listeners);
-			return result;
 		}
 
 		private static Stream CreateStream(String text)

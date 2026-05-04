@@ -5,4 +5,3 @@ using System.Runtime.InteropServices;
 [assembly: System.CLSCompliant(true)]
 
 [assembly: AssemblyDescription("XML/XSL/XPath Tools")]
-[assembly: AssemblyCopyright("Copyright © Danila Korablin 2016-2025")]
